@@ -1,0 +1,44 @@
+/**index.wxss**/
+.scrollarea {
+  flex: 1;
+  overflow: scroll;
+  max-height: 100vh;
+}
+.swiper-container {
+  height: 30vh;
+  width: 100%;
+  margin: 20rpx  0;
+}
+.swiper-card {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: #eeeeee;
+}
+
+.swiper-card-img{
+  height: 100%;
+  width: 100%;
+}
+
+.search {
+  width: 100%;
+  padding: 0;
+}
+
+.goods-list {
+  width: 100%;
+  /* background-color: red; */
+}
+
+.goods-item {
+  display: flex;
+  flex-direction: row;
+  align-items: inherit;
+  justify-content:end;
+  box-sizing: border-box;
+  padding: 15rpx;
+  margin: 0;
+}
+

@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<!-- 顶部导航 -->
+<navigation-bar title="首页" back="{{false}}" color="white" background="#c21401"></navigation-bar>
+<!-- 主体 -->
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="search">
+      <van-search
+        background="#eee"
+        placeholder="请输入搜索关键词"
+        bindtap="onSearch"
+      ></van-search>
+    </view>
+    <swiper 
+    indicator-dots="true" 
+    indicator-active-color="#e1e1e1" 
+    class="swiper-container" 
+    autoplay="true"
+    interval="2000"
+    duration="500"
+    circular="true"
+    >
+      <swiper-item wx:for="{{ carouselList }}" wx:key="index" class="swiper-card">
+        <image class="swiper-card-img" src="{{ item.imgUrl }}"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="goods-list">
+    <view class="goods-item" wx:for="{{ goodsList }}" wx:key="index">
+      <image style="width: 300rpx;height: 200rpx;" src="{{ item.goods_image }}"></image>
+      <view style="padding: 0 20rpx;margin-left: 20rpx;">
+        <text style="display: block">{{ item.goods_name }}</text>
+        <text style="display: block; color: rgb(151, 151, 151);font-size: 25rpx;">已售{{ item.goods_sales }}件</text>
+        <text style="display: block; font-weight:bolder; font-size: 35rpx;color: red;">￥{{ item.line_price_max }}元</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+
+<!-- 底部导航 -->
+
