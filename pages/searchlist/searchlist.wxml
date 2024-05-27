@@ -1,2 +1,4 @@
 <!--pages/searchlist/searchlist.wxml-->
-<text>pages/searchlist/searchlist.wxml</text>
+<!-- 顶部导航栏 -->
+<navigation-bar title="搜索结果" back="{{true}}" color="white" background="#c21401"></navigation-bar>
+

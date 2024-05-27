@@ -6,5 +6,8 @@
   align-items: center;
   justify-content: space-evenly;
   box-sizing: border-box;
-  background-color: #eee;
 } 
+
+page {
+  background-color: #eee;
+}

@@ -1,1 +1,31 @@
 /* pages/search/search.wxss */
+.scrollarea {
+    flex: 1;
+    overflow: scroll;
+    max-height: 100vh;
+}
+
+.history {
+    padding: 20rpx;
+}
+
+.history-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: inherit;
+    width: 90%;
+    padding: 20rpx;
+}
+
+.history-item {
+    display: inline-block;
+    height: 50rpx;
+    width: 120rpx;
+    background-color: white;
+    margin: 10rpx;
+    border-radius: 20%;
+    line-height: 50rpx;
+    text-align: center;
+    padding: 10rpx;
+}

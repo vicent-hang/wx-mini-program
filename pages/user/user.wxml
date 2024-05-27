@@ -1,2 +1,3 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<!-- 顶部导航栏 -->
+<navigation-bar title="个人中心" back="{{true}}" color="white" background="#c21401"></navigation-bar>

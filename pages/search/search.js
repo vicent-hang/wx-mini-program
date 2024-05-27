@@ -1,11 +1,58 @@
 // pages/search/search.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    historyList: ['手机', '电脑', '茶'],
+    inputValue: ''
+  },
 
+  /** 
+   * 自定义方法
+   */
+
+  //搜索事件
+  onSearch(event) {
+    //  console.log(event.detail);
+    const query = event.detail
+    this.toSearchListPage(query)
+  },
+
+  //标签点击事件
+  hanldeCilck(event) {
+    const query = event.currentTarget.dataset.query;
+    this.toSearchListPage(query)
+  },
+
+  //页面跳转
+  toSearchListPage(query) {
+    //判断查询参数是否在数组内
+    if (!this.data.historyList.includes(query)) {
+      this.data.historyList.unshift(query)
+      const tempArray = this.data.historyList
+      this.setData({
+        historyList: tempArray
+      })
+    } else {
+      //若在，则将改参数置顶 -> 先过滤再添加
+      this.data.historyList = this.data.historyList.filter(item => item !== query)
+      this.data.historyList.unshift(query)
+      const tempArray = this.data.historyList
+      this.setData({
+        historyList: tempArray
+      })
+    }
+    wx.navigateTo({
+      url: '/pages/searchlist/searchlist',
+    })
+  },
+
+  //删除历史
+  handleDelete() {
+    this.setData({
+      historyList: []
+    })
   },
 
   /**

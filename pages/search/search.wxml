@@ -1,2 +1,28 @@
 <!--pages/search/search.wxml-->
-<text>pages/search/search.wxml</text>
+
+<!-- 顶部导航栏 -->
+<navigation-bar title="搜索" back="{{true}}" color="white" background="#c21401"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+    <view>
+        <view style="width: 100%;">
+            <van-search 
+            value="{{ inputValue }}" 
+            placeholder="请输入搜索关键词" 
+            shape="round" bind:search="onSearch" 
+            background="#eee" focus="true" 
+            placeholder="{{ historyList[0] }}" />
+        </view>
+        <view class="history">
+            <view class="history-title" wx:if="{{ historyList.length > 0 }}">
+                <text>最近搜索</text>
+                <image bindtap="handleDelete" style="width: 45rpx;height: 45rpx;" src="../../assets/icon/delete.png" />
+            </view>
+            <text class="history-item" 
+            wx:for="{{ historyList }}" 
+            wx:key="index"
+            data-query="{{ item }}"
+            bindtap="hanldeCilck"
+            >{{ item }}</text>
+        </view>
+    </view>
+</scroll-view>
