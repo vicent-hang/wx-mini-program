@@ -44,7 +44,7 @@ Page({
       })
     }
     wx.navigateTo({
-      url: '/pages/searchlist/searchlist',
+      url: `/pages/searchlist/searchlist?goodsName=${query}`,
     })
   },
 

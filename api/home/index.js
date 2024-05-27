@@ -1,5 +1,6 @@
 import { WxApi } from '../../utils/http.config'
 
+//获取首页数据
 export const getIndexList = () => {
 	// 返回promise对象
 	return new Promise((resolve , reject) => {
