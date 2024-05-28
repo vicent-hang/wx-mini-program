@@ -14,7 +14,7 @@ Page({
     colors: [true, false , false],
     searchList: [],
     isVisual: false,
-    isAsc: true   //ture升序 false降序
+    isAsc: true, 
   },
 
   /** 
@@ -61,6 +61,7 @@ Page({
 },
 
   // 标签功能
+  // 综合
   handleTextClick01(event) {
     const index = parseInt(event.currentTarget.dataset.index)
     this.toggleColor(index)
@@ -71,7 +72,7 @@ Page({
     this.getGoodsDataList(queryObj)
   },
 
-  // 显示销量结果
+  // 销量
   handleTextClick02(event) {
     const index = parseInt(event.currentTarget.dataset.index)
     this.toggleColor(index)
@@ -84,17 +85,32 @@ Page({
     this.getGoodsDataList(queryObj)
   },
 
-  // 价格排序
+  // 价格
   handleTextClick03(event) {
     const index = parseInt(event.currentTarget.dataset.index)
     this.toggleColor(index)
-
-    const bool = !this.data.isAsc
     this.setData({
-      isAsc: bool
+      isAsc: !this.data.isAsc
     })
-
+    if(!this.data.isAsc) {
+      this.desc()
+      return
+    }
+    this.asc()
+  },
+  // 图标点击事件
+  //升序
+  asc(bool) {
     //显示结果
+    queryObj = {
+      goodsName: this.data.queryName,
+      sortType: 'price',
+      sortPrice: '0'
+    }
+    this.getGoodsDataList(queryObj)
+  },
+  //降序
+  desc() {
     queryObj = {
       goodsName: this.data.queryName,
       sortType: 'price',
@@ -105,6 +121,11 @@ Page({
 
   // 高亮切换
   toggleColor (index) {
+    if(index !== 2) {
+      this.setData({
+        isAsc: true
+      })
+    }
     if (!this.data.colors[index]) {
       const newColors = this.data.colors.map((item, idx) => {
         return idx === index

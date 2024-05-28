@@ -15,7 +15,11 @@ Page({
   //搜索事件
   onSearch(event) {
     //  console.log(event.detail);
-    const query = event.detail
+    const query = event.detail.trim()
+    console.log(query.length);
+    if(query === ''){
+      return
+    }
     this.toSearchListPage(query)
   },
 

@@ -11,8 +11,8 @@
         <view class="tap-price">
           <text class="searchlist-item {{colors[2] ? 'active' : ''}}" bindtap="handleTextClick03" data-index="2">价格</text>
           <view>
-            <van-icon name="arrow-up" size="25rpx" style="display: block;" custom-style="color: {{ isAsc ? 'black' : 'rgb(255, 81, 0)' }} " />
-            <van-icon name="arrow-down" size="25rpx" custom-style="color: {{ isAsc ? 'rgb(255, 81, 0)' : 'black' }}" />
+            <van-icon name="arrow-up"   size="25rpx" style="display: block;" custom-style="color: {{ isAsc ? 'rgb(255, 81, 0)' : 'black' }} " />
+            <van-icon name="arrow-down"   size="25rpx" custom-style="color: {{ isAsc ? 'black' : 'rgb(255, 81, 0)' }}" />
           </view>
         </view>
       </view>
