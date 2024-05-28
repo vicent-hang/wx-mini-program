@@ -25,6 +25,7 @@ export const getGoodsListByDef = (obj) => {
 		wx.request({
 			url: WxApi.baseUrl+`/goods/list&sortType=${goods.sortType}&sortPrice=${goods.sortPrice}&categoryId=0&goodsName=${goods.goodsName}&page=1`,
 			method: 'GET',
+			timeout: 5000,
 			success: (res) => {
 				resolve(res)
 			},

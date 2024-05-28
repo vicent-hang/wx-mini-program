@@ -1,3 +1,5 @@
+import { login } from "../../api/user/login"
+
 // pages/login/login.js
 Page({
 
@@ -5,7 +7,43 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isRrror: false,
+    phoneNumber: '',
+    passwrod: '',
+    isVisual: false
+  },
 
+  /**
+   * 自定义方法
+   */
+  async onLogin() {
+    try {
+      const res = await login(this.data.phoneNumber, this.data.passwrod);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  getPassword(event) {
+    const psw = event.detail.value
+    this.setData({
+      passwrod: psw
+    })
+  },
+
+  getPoneNumer(event) {
+    const pNumber = event.detail.value
+    this.setData({
+      phoneNumber: pNumber
+    })
+  },
+
+  // 显示密码
+  onClickIcon() {
+    this.setData({
+      isVisual: !this.data.isVisual
+    })
   },
 
   /**
