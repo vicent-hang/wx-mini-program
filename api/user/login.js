@@ -1,3 +1,4 @@
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
 import { WxApi } from '../../utils/http.config'
 
 export const login = (phoneNumber, password) => {
@@ -8,16 +9,18 @@ export const login = (phoneNumber, password) => {
           method: "POST",
           timeout: 5000,
           data: {
-            isParty: false,
-            mobile: phoneNumber,
-            partyData: {},
-            smsCode: password
+            'form': {
+              isParty: false,
+              mobile: phoneNumber,
+              partyData: {},
+              smsCode: password
+            }
           },
           success: (res) => {
-              resolve(res)
+              resolve(res.data)
           },
           fail: (res) => {
-              reject(res)
+              reject(res.data)
           }
         })
     })

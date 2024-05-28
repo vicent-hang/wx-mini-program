@@ -13,6 +13,7 @@
             icon="phone-o"
             placeholder="请输入手机号" 
             bind:blur="getPoneNumer"
+            bind:input="vailPhoneNumber"
             error-message="{{ isRrror? '手机号长度不为11位' : ''}}" 
             custom-style="border-radius: 50rpx; margin: 5rpx 0"
             bind:click-icon="onClickIcon" />
@@ -28,5 +29,6 @@
             bind:click-icon="onClickIcon" />
         </van-cell-group>
         <van-button type="info" round custom-class="btn-login" block bind:click="onLogin" color="#fa9b1c">登录</van-button>
+        <van-toast id="van-toast" />
     </view>
 </scroll-view>

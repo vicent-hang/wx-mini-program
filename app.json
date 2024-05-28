@@ -15,7 +15,8 @@
   },
   "usingComponents": {
     "navigation-bar": "./components/navigation-bar/navigation-bar",
-    "van-loading": "./miniprogram_npm/vant-weapp/loading"
+    "van-loading": "./miniprogram_npm/vant-weapp/loading",
+    "van-toast": "./miniprogram_npm/vant-weapp/toast"
   },
   "tabBar": {
     "list": [

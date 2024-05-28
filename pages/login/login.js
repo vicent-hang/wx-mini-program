@@ -1,4 +1,5 @@
 import { login } from "../../api/user/login"
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
 
 // pages/login/login.js
 Page({
@@ -20,8 +21,34 @@ Page({
     try {
       const res = await login(this.data.phoneNumber, this.data.passwrod);
       console.log(res);
+      if (res.status >= 200 && res.status < 300) {
+        wx.setStorageSync('token', res.data.token);
+        wx.setStorageSync('user_phone', this.data.phoneNumber);
+
+        // 显示登录成功的提示
+        Toast.success('登录成功!');
+
+        // 跳转
+        // 获取页面栈
+        const pages = getCurrentPages();
+        // 延迟1.5秒后再跳转
+        setTimeout(() => {
+          if (pages.length > 1) {
+            // 如果有上一页，返回上一页
+            wx.navigateBack();
+          } else {
+            // 如果没有上一页，返回首页
+            wx.reLaunch({
+              url: '/pages/index/index'
+            });
+          }
+        }, 1000); 
+      } else {
+        Toast.fail('登录失败!');
+      }
     } catch (error) {
       console.log(error);
+      Toast.fail('登录失败!');
     }
   },
 
@@ -37,6 +64,20 @@ Page({
     this.setData({
       phoneNumber: pNumber
     })
+  },
+
+  //验证手机号
+  vailPhoneNumber(event) {
+    const value = event.detail
+    if(value.length !== 11){
+      this.setData({
+        isRrror: true
+      })
+    }else {
+      this.setData({
+        isRrror: false
+      })
+    }
   },
 
   // 显示密码
