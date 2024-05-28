@@ -3,6 +3,5 @@
     "van-button": "/miniprogram_npm/vant-weapp/button",
     "van-search": "/miniprogram_npm/vant-weapp/search",
     "van-icon": "/miniprogram_npm/vant-weapp/icon"
-  },
-  "navigationBarTextStyle": "white"
+  }
 }

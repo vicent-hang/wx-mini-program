@@ -29,7 +29,7 @@
     </view>
     <view wx:else class="searchlist-content">
       <view class="searchlist-notFound">
-        <image src="/assets/icon/not-found.png" style="width: 500rpx;height: 300rpx;"></image>
+        <image src="/assets/img/not-found.png" style="width: 500rpx;height: 300rpx;"></image>
         <text>找不到此商品</text>
       </view>
     </view>

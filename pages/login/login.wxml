@@ -1,2 +1,32 @@
 <!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<!-- 顶部导航栏 -->
+<navigation-bar title="登录" back="{{true}}" color="white" background="#c21401"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+    <view class="container">
+        
+        <van-cell-group>
+            <van-field
+                value="{{ username }}"
+                label="手机号"
+                icon="phone-o"
+                placeholder="请输入用户名"
+                bind:click-icon="onClickIcon"
+            />
+            <van-field
+                value="{{ username }}"    
+                password
+                label="密码"
+                icon="closed-eye"
+                placeholder="请输入密码"
+                bind:click-icon="onClickIcon"
+            />
+        </van-cell-group>
+        <van-button 
+        type="info" 
+        round 
+        custom-class="btn-login" 
+        block bind:click="onLogin"
+        color="#fa9b1c"
+        >登录</van-button>
+    </view>
+</scroll-view>

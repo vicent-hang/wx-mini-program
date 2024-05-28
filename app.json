@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/search/search",
+  "entryPagePath": "pages/login/login",
   "pages": [
     "pages/index/index",
     "pages/login/login",
@@ -10,7 +10,7 @@
     "pages/goodsInfo/goodsInfo"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "navigationStyle": "custom"
   },
   "usingComponents": {
