@@ -1,9 +1,8 @@
 {
   "usingComponents": {
-    "navigation-bar": "/components/navigation-bar/navigation-bar",
-    "van-button": "../../miniprogram_npm/vant-weapp/button",
-    "van-search": "../../miniprogram_npm/vant-weapp/search",
-    "van-loading": "../../miniprogram_npm/vant-weapp/loading"
+    "van-button": "/miniprogram_npm/vant-weapp/button",
+    "van-search": "/miniprogram_npm/vant-weapp/search",
+    "van-icon": "/miniprogram_npm/vant-weapp/icon"
   },
   "navigationBarTextStyle": "white"
 }

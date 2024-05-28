@@ -43,7 +43,8 @@ Page({
         historyList: tempArray
       })
     }
-    wx.navigateTo({
+    // 不保留跳转的历史信息
+    wx.redirectTo({
       url: `/pages/searchlist/searchlist?goodsName=${query}`,
     })
   },

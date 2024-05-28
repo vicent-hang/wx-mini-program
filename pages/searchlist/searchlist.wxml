@@ -8,21 +8,33 @@
       <view class="searchlist-title">
         <text class="searchlist-item {{colors[0] ? 'active' : ''}}" bindtap="handleTextClick01" data-index="0">综合</text>
         <text class="searchlist-item {{colors[1] ? 'active' : ''}}" bindtap="handleTextClick02" data-index="1">销量</text>
-        <view>
+        <view class="tap-price">
           <text class="searchlist-item {{colors[2] ? 'active' : ''}}" bindtap="handleTextClick03" data-index="2">价格</text>
+          <view>
+            <van-icon name="arrow-up" size="25rpx" style="display: block;" custom-style="color: {{ isAsc ? 'black' : 'rgb(255, 81, 0)' }} " />
+            <van-icon name="arrow-down" size="25rpx" custom-style="color: {{ isAsc ? 'rgb(255, 81, 0)' : 'black' }}" />
+          </view>
         </view>
       </view>
     </view>
-    <view class="searchlist-content">
+    <view wx:if="{{ searchList.length > 0 }}" class="searchlist-content">
       <view class="searchlist-item" wx:for="{{ searchList }}" wx:key="index">
         <image style="width: 300rpx;height: 200rpx;" src="{{ item.goods_image }}"></image>
         <view style="padding: 0 20rpx;margin-left: 20rpx;">
           <text style="display: block">{{ item.goods_name }}</text>
           <text style="display: block; color: rgb(151, 151, 151);font-size: 25rpx;">已售{{ item.goods_sales }}件</text>
-          <text style="display: block; font-weight:bolder; font-size: 35rpx;color: red;">￥{{ item.line_price_max }}元</text>
+          <text style="display: block; font-weight:bolder; font-size: 35rpx;color: red;">￥{{ item.goods_price_max }}元</text>
         </view>
       </view>
     </view>
+    <view wx:else class="searchlist-content">
+      <view class="searchlist-notFound">
+        <image src="/assets/icon/not-found.png" style="width: 500rpx;height: 300rpx;"></image>
+        <text>找不到此商品</text>
+      </view>
+    </view>
   </view>
-  
+  <!-- 加载框 -->
+  <van-loading class="loading" color="#c21401" wx:if="{{ searchList.length === 0 && !isVisual}}" />
+
 </scroll-view>

@@ -36,6 +36,8 @@
       </view>
     </view>
   </view>
+  <!-- 加载框 -->
+  <van-loading class="loading" color="#c21401" wx:if="{{ goodsList.length === 0 }}" />
 </scroll-view>
 
 

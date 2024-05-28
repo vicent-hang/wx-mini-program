@@ -24,7 +24,7 @@
 
 .searchlist-content {
 	width: 100%;
-	margin-top: 10rpx;
+	margin-top: 4rpx;
 	/* background-color: red; */
 }
 
@@ -36,5 +36,24 @@
 	box-sizing: border-box;
 	padding: 15rpx;
 	background-color: #fff;
-	margin-bottom: 20rpx;
+	margin-bottom: 12rpx;
+}
+
+.searchlist-notFound {
+	height: 50vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.tap-price {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.tap-active {
+	color: rgb(255, 81, 0);
 }

@@ -23,7 +23,7 @@ export const getGoodsListByDef = (obj) => {
 	}
 	return new Promise((resolve , reject) => {
 		wx.request({
-			url: WxApi.baseUrl+`/goods/list&sortType=${goods.sortType}&sortPrice${goods.sortPrice}0&categoryId=0&goodsName=${goods.goodsName}&page=1`,
+			url: WxApi.baseUrl+`/goods/list&sortType=${goods.sortType}&sortPrice=${goods.sortPrice}&categoryId=0&goodsName=${goods.goodsName}&page=1`,
 			method: 'GET',
 			success: (res) => {
 				resolve(res)

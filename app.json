@@ -2,6 +2,7 @@
   "entryPagePath": "pages/search/search",
   "pages": [
     "pages/index/index",
+    "pages/login/login",
     "pages/cart/cart",
     "pages/user/user",
     "pages/search/search",
@@ -11,6 +12,10 @@
   "window": {
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "navigation-bar": "./components/navigation-bar/navigation-bar",
+    "van-loading": "./miniprogram_npm/vant-weapp/loading"
   },
   "tabBar": {
     "list": [
