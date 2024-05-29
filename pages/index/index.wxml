@@ -27,12 +27,14 @@
     </swiper>
   </view>
   <view class="goods-list">
-    <view class="goods-item" wx:for="{{ goodsList }}" wx:key="index">
-      <image style="width: 300rpx;height: 200rpx;" src="{{ item.goods_image }}"></image>
-      <view style="padding: 0 20rpx;margin-left: 20rpx;">
-        <text style="display: block">{{ item.goods_name }}</text>
-        <text style="display: block; color: rgb(151, 151, 151);font-size: 25rpx;">已售{{ item.goods_sales }}件</text>
-        <text style="display: block; font-weight:bolder; font-size: 35rpx;color: red;">￥{{ item.line_price_max }}元</text>
+    <view wx:for="{{ goodsList }}" wx:key="index">
+      <view class="goods-item" bindtap="goGoodsInfoPage" data-goods-id="{{ item.goods_id }}">
+        <image style="width: 300rpx;height: 200rpx;" src="{{ item.goods_image }}" mode="aspectFit"></image>
+        <view style="padding: 0 20rpx;margin-left: 20rpx;">
+          <text style="display: block">{{ item.goods_name }}</text>
+          <text style="display: block; color: rgb(151, 151, 151);font-size: 25rpx;">已售{{ item.goods_sales }}件</text>
+          <text style="display: block; font-weight:bolder; font-size: 35rpx;color: red;">￥{{ item.line_price_max }}元</text>
+        </view>
       </view>
     </view>
   </view>

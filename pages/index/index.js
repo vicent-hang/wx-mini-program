@@ -46,6 +46,15 @@ Page({
     })
   },
 
+  //跳转详情页
+  goGoodsInfoPage(event) {
+    const id = event.currentTarget.dataset.goodsId
+    // console.log(id);
+    wx.navigateTo({
+      url: `/pages/goodsInfo/goodsInfo?goodsId=${id}`,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -85,7 +94,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-    this.storeBindings.destroyStoreBindings()
   },
 
   /**

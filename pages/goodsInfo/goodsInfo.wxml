@@ -1,2 +1,62 @@
 <!--pages/goodsInfo/goodsInfo.wxml-->
-<text>pages/goodsInfo/goodsInfo.wxml</text>
+<navigation-bar title="商品详情" back="{{true}}" color="white" background="#c21401"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+    <view class="container">
+        <swiper 
+        indicator-dots="true" 
+        indicator-active-color="#e1e1e1" 
+        class="swiper-container" 
+        autoplay="true" 
+        interval="2000" 
+        duration="500" 
+        circular="true">
+            <swiper-item wx:for="{{ goodsInfoList[0].goods_images }}" wx:key="index" class="swiper-card">
+                <image class="swiper-card-img" src="{{ item.external_url}}"></image>
+            </swiper-item>
+        </swiper>
+        <view class="goodsinfo-title">
+            <view class="goodsinfo-title-price">
+                <text style="font-size: larger;color: red;">{{ goodsInfoList[0].goods_price_max }} ￥</text>
+                <text style="font-size: smaller;color: gray;">已售 {{ goodsInfoList[0].goods_sales }} 件</text>
+            </view>
+            <text style="display: block;padding: 0 20rpx;">{{ goodsInfoList[0].goods_name }}</text>
+        </view>
+        <view style="display: flex;flex-direction: row;justify-content: left;width: 100%;">
+            <view style="display: flex;flex-direction: row;padding: 0 20rpx;">
+                <van-icon name="certificate" color="red" size="40rpx" />
+                <text style="font-size: smaller;">七天无理由退货</text>
+            </view>
+            <view style="display: flex;flex-direction: row;">
+                <van-icon name="certificate" color="red" size="40rpx" />
+                <text style="font-size: smaller;">包邮</text>
+            </view>
+        </view>
+        <view class="goodsinfo-dsc">
+            <text style="font-size: large;padding: 40rpx 20rpx;display: block;">详情</text>
+            <image wx:for="{{ goodsInfoList[0].goods_images }}" src="{{ item.external_url }}"></image>
+        </view>
+    </view>
+    <!-- 底部标签栏 -->
+    <van-tabbar active="{{ active }}" bind:change="onChange">
+        <van-tabbar-item>
+            <image
+            slot="icon"
+            src="/assets/icon/home.png"
+            mode="aspectFit"
+            style="width: 50rpx;height: 50rpx;"
+            />
+        </van-tabbar-item>
+        <van-tabbar-item info="3">
+            <image
+            slot="icon"
+            src="/assets/icon/shopping.png"
+            mode="aspectFit"
+            style="width: 50rpx;height: 50rpx;"
+            />
+        </van-tabbar-item>
+        <view style="width: 70%;">
+            <button class="btn">加入购物车</button>
+        </view>
+    </van-tabbar>
+</scroll-view>
+<van-loading class="loading" color="#c21401" wx:if="{{ goodsInfoList.length === 0 }}" />

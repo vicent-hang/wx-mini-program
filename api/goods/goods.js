@@ -36,3 +36,20 @@ export const getGoodsListByDef = (obj) => {
 	})
 }
 
+// 获取商品详情页
+export const getGoodsInfo = (goodsId) => {
+	return new Promise((resolve , reject) => {
+		wx.request({
+		  url:WxApi.baseUrl + `/goods/detail&goodsId=${goodsId}`,
+		  method: 'GET',
+		  header: WxApi.header,
+		  success: res => {
+			  resolve(res.data)
+		  },
+		  fail: res => {
+			  reject(res.data)
+		  }
+		})
+	})
+}
+

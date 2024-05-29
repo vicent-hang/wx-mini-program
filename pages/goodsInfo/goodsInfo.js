@@ -1,3 +1,5 @@
+import { getGoodsInfo } from "../../api/goods/goods"
+
 // pages/goodsInfo/goodsInfo.js
 Page({
 
@@ -5,14 +7,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    goodsInfoList: []
   },
+
+  /**
+   * 自定义方法
+   */
+
+   async getGoodsInfoList(goodsId) {
+    const res = await getGoodsInfo(goodsId)
+    const {data: { detail } } = res
+    let newList = []
+    newList.push(detail)
+    this.setData({
+      goodsInfoList: newList
+    })
+   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const goodsId = options.goodsId
+    this.getGoodsInfoList(goodsId)
   },
 
   /**
