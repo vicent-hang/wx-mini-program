@@ -28,3 +28,13 @@ page {
 .field-inp{
   border-radius: 100%;
 }
+
+.goods-item {
+  display: flex;
+  flex-direction: row;
+  align-items: inherit;
+  justify-content:end;
+  box-sizing: border-box;
+  padding: 15rpx;
+  margin: 0;
+}

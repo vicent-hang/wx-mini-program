@@ -7,7 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    goodsInfoList: []
+    goodsInfoList: [],
+    show: false
   },
 
   /**
@@ -23,6 +24,15 @@ Page({
       goodsInfoList: newList
     })
    },
+
+   // 显示弹出层
+   showPop() {
+    this.setData({ show: true })
+   },
+
+   onClose() {
+    this.setData({ show: false });
+  },
 
   /**
    * 生命周期函数--监听页面加载

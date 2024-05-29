@@ -2,7 +2,7 @@
 .scrollarea {
     flex: 1;
     overflow: scroll;
-    max-height: 100vh;
+    max-height: 90vh;
   }
 
 .swiper-container {
@@ -42,6 +42,7 @@
       margin-top: 20rpx;
       background-color: white;
       width: 100%;
+      text-align: center;
   }
 
   .van-tabbar {
@@ -58,4 +59,24 @@
     background-color: rgb(253, 158, 15);
     color: white;
     border-radius: 50rpx;
+}
+
+.goods-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:end;
+  box-sizing: border-box;
+  padding: 15rpx;
+  margin: 0;
+}
+
+.goods-count {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+  box-sizing: border-box;
+  padding: 15rpx;
+  margin: 0;
 }

@@ -33,7 +33,7 @@
         </view>
         <view class="goodsinfo-dsc">
             <text style="font-size: large;padding: 40rpx 20rpx;display: block;">详情</text>
-            <image wx:for="{{ goodsInfoList[0].goods_images }}" src="{{ item.external_url }}"></image>
+            <image wx:for="{{ goodsInfoList[0].goods_images }}" wx:key="index" src="{{ item.external_url }}"></image>
         </view>
     </view>
     <!-- 底部标签栏 -->
@@ -55,8 +55,32 @@
             />
         </van-tabbar-item>
         <view style="width: 70%;">
-            <button class="btn">加入购物车</button>
+            <button class="btn" bindtap="showPop">加入购物车</button>
         </view>
     </van-tabbar>
 </scroll-view>
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  overlay="{{ true }}"
+  custom-style="border-radius: 20rpx 20rpx 0 0"
+  bind:close="onClose"
+>
+    <view class="goods-item">
+        <image src="{{ goodsInfoList[0].goods_image }}" mode="aspectFit" style="width: 300rpx;height: 300rpx;"></image>
+        <view style="margin: 0 40rpx;">
+            <text style="display: block;color: red;">0.01 ￥</text>
+            <text style="display: block;">mingzi</text>
+        </view>
+    </view>
+    <view class="goods-count">
+        <text>数量</text>
+        <view style="display: flex; align-items: center;width: 30%;">
+            <button size="mini" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx;">-</button>
+            <text style="padding: 0 10rpx;">1</text>
+            <button size="mini" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx">+</button>
+        </view>
+    </view>
+    <button class="btn" style="width: 70%;">加入购物车</button>
+</van-popup>
 <van-loading class="loading" color="#c21401" wx:if="{{ goodsInfoList.length === 0 }}" />

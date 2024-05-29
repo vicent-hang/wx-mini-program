@@ -2,7 +2,7 @@
 .scrollarea {
   flex: 1;
   overflow: scroll;
-  max-height: 100vh;
+  max-height: 90vh;
 }
 .swiper-container {
   height: 30vh;
