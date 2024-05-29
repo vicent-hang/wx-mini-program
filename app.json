@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/login/login",
+  "entryPagePath": "pages/user/user",
   "pages": [
     "pages/index/index",
     "pages/login/login",
@@ -25,6 +25,7 @@
       "text": "首页",
       "iconPath": "assets/icon/home.png",
       "selectedIconPath": "assets/icon/home-selected.png"
+      
       },
       {
       "pagePath": "pages/cart/cart",

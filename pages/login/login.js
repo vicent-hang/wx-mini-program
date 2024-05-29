@@ -20,14 +20,11 @@ Page({
   async onLogin() {
     try {
       const res = await login(this.data.phoneNumber, this.data.passwrod);
-      console.log(res);
+      // console.log(res);
       if (res.status >= 200 && res.status < 300) {
         wx.setStorageSync('token', res.data.token);
-        wx.setStorageSync('user_phone', this.data.phoneNumber);
-
-        // 显示登录成功的提示
+        wx.setStorageSync('user_info', JSON.stringify({userName: 'ikun',phoneNumber: this.data.phoneNumber}));
         Toast.success('登录成功!');
-
         // 跳转
         // 获取页面栈
         const pages = getCurrentPages();

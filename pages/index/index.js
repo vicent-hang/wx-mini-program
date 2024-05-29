@@ -1,6 +1,9 @@
 // pages/index/index.js
 
+import { createStoreBindings } from "mobx-miniprogram-bindings";
 import { getIndexList }  from "../../api/home/index"
+import { userStore } from '../../store/store'
+import { WxApi } from "../../utils/http.config";
 
 
 Page({
@@ -48,6 +51,13 @@ Page({
    */
   onLoad(options) {
     this.getHomeDataList()
+    // this.storeBindings = createStoreBindings(this, {
+    //   store: userStore,
+    //   fields: ['userInfo'],
+    //   actions: ['setUserInfo']
+    // })
+    // this.setUserInfo()
+    
   },
 
   /**
@@ -75,7 +85,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    this.storeBindings.destroyStoreBindings()
   },
 
   /**

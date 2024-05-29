@@ -1,3 +1,5 @@
+import Toast from "../../miniprogram_npm/vant-weapp/toast/toast"
+
 // pages/user/user.js
 Page({
 
@@ -5,14 +7,34 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userInfo: {}
+  },
 
+  /**
+   * 自定义方法
+   */
+  loginOut() {
+    wx.clearStorageSync()
+    Toast.success('退出成功!')
+
+    setTimeout(() => {
+      wx.redirectTo({
+        url: '/pages/login/login'
+      })
+    },1000)
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    const newUserInfo = JSON.parse(wx.getStorageSync('user_info'))
+    if(newUserInfo.phoneNumber) {
+      newUserInfo.phoneNumber = newUserInfo.phoneNumber.slice(0,3)+'******'+newUserInfo.phoneNumber.slice(8,11)
+    }
+    this.setData({
+      userInfo: newUserInfo
+    })
   },
 
   /**

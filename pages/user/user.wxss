@@ -1,1 +1,14 @@
 /* pages/user/user.wxss */
+
+.uesr-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    /* background-color: aqua; */
+    background-color: rgb(255, 233, 193);
+    background-size: 100%;
+    height: 15vh;
+    
+}
