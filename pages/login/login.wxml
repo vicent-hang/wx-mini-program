@@ -23,7 +23,7 @@
             error-message="{{}}" 
             label="密码" 
             icon="{{ isVisual? 'eye-o' : 'closed-eye' }}" 
-            placeholder="请输入密码" 
+            placeholder="默认密码246810" 
             bind:blur="getPassword"
             custom-style="border-radius: 50rpx;"
             bind:click-icon="onClickIcon" />

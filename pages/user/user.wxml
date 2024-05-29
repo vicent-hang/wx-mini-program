@@ -9,8 +9,61 @@
                 <text style="display: block;">{{ userInfo.userName }}</text>
                 <text style="display: block;font-size: small;">{{ userInfo.phoneNumber }}</text>
             </view>
-            <button bindtap="loginOut">退出登录</button>
+            <button bindtap="loginOut" type="warn" size="mini"><text class="uesr-title-btn">退出登录</text></button>
+        </view>
+        <view class="user-account">
+            <view class="user-account-item">
+                <text style="display: block;font-size: larger;margin: 10rpx;color: red;">6666￥</text>
+                <text style="display: block;font-size:30rpx;margin: 10rpx;color: gray;">账户余额</text>
+            </view>
+            <view class="user-account-item">
+                <text style="display: block;font-size: larger;margin: 10rpx;color: red;">300</text>
+                <text style="display: block;font-size:30rpx;margin: 10rpx;color: gray;">积分</text>
+            </view>
+            <view class="user-account-item">
+                <text style="display: block;font-size: larger;margin: 10rpx;color: red;">3张</text>
+                <text style="display: block;font-size:30rpx;margin: 10rpx;color: gray;">优惠券</text>
+            </view>
+        </view>
+        <view class="user-order">
+            <view class="user-account-item">
+                <van-icon name="coupon-o" size="55rpx" />
+                <text style="display: block;font-size:30rpx;color: #353535;">全都订单</text>
+            </view>
+            <view class="user-account-item">
+                <van-icon name="logistics" size="55rpx" />
+                <text style="display: block;font-size:30rpx;color: #353535;">已发货</text>
+            </view>
+            <view class="user-account-item">
+                <van-icon name="refund-o" size="55rpx"/>
+                <text style="display: block;font-size:30rpx;color: #353535;">退换/售后</text>
+            </view>
+        </view>
+        <view class="user-server">
+            <text class="user-server-title">我的服务</text>
+            <view class="user-server-content">
+                <view class="user-server-item">
+                    <van-icon name="scan" size="55rpx" color="red" />
+                    <text style="display: block;font-size:30rpx;color: #353535;">扫一扫</text>
+                </view>
+                <view class="user-server-item">
+                    <van-icon name="bullhorn-o"  size="55rpx" color="red" />
+                    <text style="display: block;font-size:30rpx;color: #353535;">通知</text>
+                </view>
+                <view class="user-server-item">
+                    <van-icon name="star-o" size="55rpx" color="red" />
+                    <text style="display: block;font-size:30rpx;color: #353535;">我的收藏</text>
+                </view>
+                <view class="user-server-item">
+                    <van-icon name="vip-card-o" size="55rpx" color="red" />
+                    <text style="display: block;font-size:30rpx;color: #353535;">VIP权益</text>
+                </view>
+               
+                
+                
+            </view>
         </view>
     </view>
+    <van-dialog id="van-dialog" />
     <van-toast id="van-toast" />
 </scroll-view>
