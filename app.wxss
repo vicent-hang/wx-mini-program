@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: space-evenly;
   box-sizing: border-box;
+  position: relative;
 } 
 
 page {
@@ -37,4 +38,15 @@ page {
   box-sizing: border-box;
   padding: 15rpx;
   margin: 0;
+}
+
+.card-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-around;
+  box-sizing: border-box;
+  padding: 15rpx;
+  margin: 0;
+  padding: 0 40rpx;
 }

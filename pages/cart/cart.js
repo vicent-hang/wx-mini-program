@@ -1,5 +1,6 @@
 import { cartSore } from '../../store/store'
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
 
 // pages/cart/cart.js
 Page({
@@ -14,7 +15,25 @@ Page({
   /**
    * 自定义方法
    */
+  sub(event) {
+    const item = event.currentTarget.dataset.item
+    this.upadateCartAction(item.goods_id, item.goods_num - 1, item.goods_sku_id)
+    Toast.loading({
+      duration: 1000,
+      forbidClick: true,
+      loadingType: 'spinner',
+    });
+  },
 
+  add(event) {
+    const item = event.currentTarget.dataset.item
+    this.upadateCartAction(item.goods_id, item.goods_num + 1, item.goods_sku_id)
+    Toast.loading({
+      duration: 1000,
+      forbidClick: true,
+      loadingType: 'spinner',
+    });
+  },
 
 
   /**
@@ -26,7 +45,7 @@ Page({
     this.storeBindings = createStoreBindings(this, {
       store: cartSore,
       fields: ['cartList'],
-      actions: ['getCartListAction']
+      actions: ['getCartListAction','upadateCartAction','deleteCartAction']
     })
     this.getCartListAction()
   },

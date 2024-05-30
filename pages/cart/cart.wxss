@@ -4,3 +4,29 @@
     overflow: scroll;
     max-height: 90vh;
   }
+
+  .cartlist{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 95%;
+    padding: 0 20rpx;
+  }
+
+  .cartlist-card {
+    width: 90%;
+    margin: 20rpx;
+  }
+
+  .tabbar-bill {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    padding: 0 20rpx;
+    position: fixed;
+    bottom: 0rpx;
+    background-color: white;
+  }

@@ -25,6 +25,11 @@ export const getUpdadeCart = (goodsId, goodsNum, goodsSkuId) => {
           url:WxApi.baseUrl + '/cart/update',
           method: 'POST',
           header: WxApi.header,
+          data: {
+            goodsId,
+            goodsNum,
+            goodsSkuId
+          },
           success: res => {
             resolve(res.data)
           },
@@ -64,6 +69,9 @@ export const deletCart = (cartIds) => {
           url:WxApi.baseUrl + '/cart/clear',
           method: 'POST',
           header: WxApi.header,
+          data: {
+            cartIds
+          },
           success: res => {
             resolve(res.data)
           },

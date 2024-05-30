@@ -62,10 +62,11 @@
         </view>
     </van-tabbar>
 </scroll-view>
+<!-- 底部弹层 -->
 <van-popup
   show="{{ show }}"
   position="bottom"
-  overlay="{{ true }}"
+  overlay="true"
   custom-style="border-radius: 20rpx 20rpx 0 0"
   bind:close="onClose"
 >
@@ -86,4 +87,5 @@
     </view>
     <button class="btn" bindtap="addCart" style="width: 70%;">加入购物车</button>
 </van-popup>
+<van-toast id="van-toast" />
 <van-loading class="loading" color="#c21401" wx:if="{{ goodsInfoList.length === 0 }}" />

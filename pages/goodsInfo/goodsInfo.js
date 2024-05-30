@@ -1,5 +1,6 @@
 import { getCart } from "../../api/cart/cart"
 import { getGoodsInfo } from "../../api/goods/goods"
+import Toast from "../../miniprogram_npm/vant-weapp/toast/toast"
 
 // pages/goodsInfo/goodsInfo.js
 Page({
@@ -33,7 +34,7 @@ Page({
    },
 
    onClose() {
-    this.setData({ show: false });
+    this.setData({ show: false  });
   },
 
   //数量加减
@@ -58,8 +59,14 @@ Page({
     const goodsId = this.data.goodsInfoList[0].goods_id
     const goodsNum = this.data.count
     const goodsSkuId = this.data.goodsInfoList[0].skuList[0].goods_sku_id
-    const res = getCart(goodsId, goodsNum, goodsSkuId)
-    console.log(res);
+    const res = await getCart(goodsId, goodsNum, goodsSkuId)
+    if(res.status >= 200 & res.status< 300) {
+      Toast('添加购物车成功!')
+      this.setData({
+        show: false
+      })
+    }
+    // console.log(res);
     // wx.switchTab({
     //   url: '/pages/cart/cart',
     // })

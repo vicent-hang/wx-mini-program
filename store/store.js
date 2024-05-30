@@ -2,7 +2,7 @@
  * 全局状态管理
  */
 import { observable, action } from 'mobx-miniprogram';
-import { getCartList } from '../api/cart/cart';
+import { getCartList, getUpdadeCart } from '../api/cart/cart';
 
 export const cartSore = observable({
   // 数据字段
@@ -24,8 +24,12 @@ export const cartSore = observable({
     cartSore.cartList = res.data.list
     // console.log(cartSore.cartList);
   }),
-  upadateCartAction: action(() => {
+  upadateCartAction: action(async (goodsId,goodsNum,goodsSkuId) => {
+    await getUpdadeCart(goodsId,goodsNum,goodsSkuId)
+    // console.log(res);
 
+    //重写拉取列表
+    cartSore.getCartListAction()
   }),
   deleteCartAction: action(() => {
 

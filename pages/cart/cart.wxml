@@ -13,21 +13,35 @@
     </view>
 
     <!-- 购物车列表 -->
-    <van-card
-      wx:for="{{ cartList }}"
-      num="{{ item.goods_num }}"
-      price="10.00"
-      desc="描述信息"
-      title="商品标题"
-      thumb="{{ item.goods.goods_image }}"
-      style="width: 95%;margin-bottom: 20rpx;border-radius: 20rpx;"
-    >
-      <view slot="footer" >
-        <!-- <van-button size="mini" round >+</van-button>
-        <van-button size="mini" round style="width: 30%;">-</van-button> -->
-            <button size="mini" bindtap="sub" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding:0 10rpx;margin: 0 10rpx;border-radius: 50%;">-</button>
-            <button size="mini" bindtap="add" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx;margin: 0 10rpx;border-radius: 50%;">+</button>
+    <view class="cartlist" wx:for="{{ cartList }}" wx:key="index">
+      <van-checkbox  value="{{ true }}" bind:change="onChange"></van-checkbox>
+      <view class="cartlist-card">
+        <van-card
+          num="{{ item.goods_num }}"
+          price="10.00"
+          desc="描述信息"
+          title="商品标题"
+          thumb="{{ item.goods.goods_image }}"
+          style="width: 95%;margin-bottom: 20rpx;border-radius: 20rpx;"
+        >
+          <view slot="footer" >
+            <!-- <van-button size="mini" round >+</van-button>
+            <van-button size="mini" round style="width: 30%;">-</van-button> -->
+                <button size="mini" disabled="{{ item.goods_num <= 1 }}" data-item="{{ item }}" bindtap="sub" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding:0 10rpx;margin: 0 10rpx;border-radius: 50%;">-</button>
+                <button size="mini" bindtap="add" data-item="{{ item }}"  style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx;margin: 0 10rpx;border-radius: 50%;">+</button>
+          </view>
+        </van-card>
       </view>
-    </van-card>
-</view>
+    </view>  
+  </view>
+  <view class="tabbar-bill">   
+    <van-checkbox value="{{ true }}" bind:change="onChange">复选框</van-checkbox>
+    <view class="card-row" style="width: 70%;">
+      <text>合计：9999 ￥</text>
+      <button style="background-color: #fc4128;color: white;width: 200rpx;border-radius: 50rpx;" bindtap="">结算</button>
+    </view>
+  </view>
 </scroll-view>
+<van-toast id="van-toast" />
+<van-loading class="loading" color="#c21401" wx:if="{{ cartList.length === 0 }}" />
+
