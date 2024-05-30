@@ -30,3 +30,20 @@
     bottom: 0rpx;
     background-color: white;
   }
+
+  page {
+    background-color: rgb(196, 196, 196);
+  }
+
+  .searchlist-content {
+    width: 100%;
+    margin-top: 4rpx;
+    /* background-color: red; */
+  }
+  .searchlist-notFound {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }

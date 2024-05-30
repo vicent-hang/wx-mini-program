@@ -3,7 +3,7 @@
 <navigation-bar title="购物车" back="{{false}}" color="white" background="#c21401"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
   <!-- 购物车头 -->
-  <view class="container">
+  <view wx:if="{{ cartList.length > 0 }}" class="container">
     <view style="display: flex;flex-direction: row;justify-content: space-between;padding: 20rpx;width: 90%;">
       <view><text>共</text><text style="color: red;margin: 0 10rpx;">{{ totalCount }}</text><text>件商品</text></view>
       <view>
@@ -11,39 +11,47 @@
         <text bindtap="delete">编辑</text>
       </view>
     </view>
-
     <!-- 购物车列表 -->
-    <view class="cartlist" wx:for="{{ cartList }}" wx:key="index">
-      <van-checkbox  value="{{ true }}" bind:change="onChange"></van-checkbox>
-      <view class="cartlist-card">
-        <van-card
-          num="{{ item.goods_num }}"
-          price="{{ item.goods.goods_price_max }}"
-          title="{{ item.goods.goods_name }}"
-          thumb="{{ item.goods.goods_image }}"
-          style="width: 95%;margin-bottom: 20rpx;border-radius: 20rpx;"
-        >
-          <view slot="footer" >
-            <!-- <van-button size="mini" round >+</van-button>
-            <van-button size="mini" round style="width: 30%;">-</van-button> -->
-                <button size="mini" disabled="{{ item.goods_num <= 1 }}" data-item="{{ item }}" bindtap="sub" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding:0 10rpx;margin: 0 10rpx;border-radius: 50%;">-</button>
-                <button size="mini" bindtap="add" data-item="{{ item }}"  style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx;margin: 0 10rpx;border-radius: 50%;">+</button>
-          </view>
-        </van-card>
-      </view>
-    </view>  
+    <van-checkbox-group value="{{ isCheckedArray }}" bind:change="onChange">
+      <view class="cartlist" wx:for="{{ cartList }}" wx:key="index">
+        <van-checkbox  name="{{ item.id }}"></van-checkbox>
+        <view class="cartlist-card">
+          <van-card
+            num="{{ item.goods_num }}"
+            price="{{ item.goods.goods_price_max }}"
+            title="{{ item.goods.goods_name }}"
+            thumb="{{ item.goods.goods_image }}"
+            style="width: 95%;margin-bottom: 20rpx;border-radius: 20rpx;"
+          >
+            <view slot="footer" >
+              <!-- <van-button size="mini" round >+</van-button>
+              <van-button size="mini" round style="width: 30%;">-</van-button> -->
+                  <button size="mini" disabled="{{ item.goods_num <= 1 }}" data-item="{{ item }}" bindtap="sub" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding:0 10rpx;margin: 0 10rpx;border-radius: 50%;">-</button>
+                  <button size="mini" bindtap="add" data-item="{{ item }}"  style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx;margin: 0 10rpx;border-radius: 50%;">+</button>
+            </view>
+          </van-card>
+        </view>
+      </view>  
+    </van-checkbox-group>
   </view>
+  <!-- 空购物车 -->
+  <view wx:else class="searchlist-content">
+      <view class="searchlist-notFound">
+        <image src="/assets/img/not-found.png" style="width: 500rpx;height: 300rpx;"></image>
+        <text>购物车为空</text>
+      </view>
+    </view>
   <view class="tabbar-bill">   
-    <van-checkbox value="{{ true }}" bind:change="onChange">复选框</van-checkbox>
+    <van-checkbox value="{{ isAll }}" bind:change="selectAll">复选框</van-checkbox>
     <view wx:if="{{ !isEdit }}" class="card-row" style="width: 70%;">
       <text>合计：</text><text style="color: red;">{{ totalPrice }}</text><text>￥</text>
       <button style="background-color: #fc4128;color: white;width: 200rpx;border-radius: 50rpx;" bindtap="">结算</button>
     </view>
     <view wx:else class="card-row" style="width: 50%;">
-      <button style="background-color: #fc4128;color: white;width: 200rpx;border-radius: 50rpx;" bindtap="">删除</button>
+      <button style="background-color: #fc4128;color: white;width: 200rpx;border-radius: 50rpx;" bindtap="deleteCart">删除</button>
     </view>
   </view>
 </scroll-view>
 <van-toast id="van-toast" />
-<van-loading class="loading" color="#c21401" wx:if="{{ cartList.length === 0 }}" />
+<van-dialog id="van-dialog" />
 

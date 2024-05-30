@@ -7,6 +7,7 @@ export const getCartList = () => {
           url:WxApi.baseUrl + '/cart/list',
           method: 'GET',
           header: WxApi.header,
+          timeout: 5000,
           success: res => {
             resolve(res.data)
           },
@@ -25,6 +26,7 @@ export const getUpdadeCart = (goodsId, goodsNum, goodsSkuId) => {
           url:WxApi.baseUrl + '/cart/update',
           method: 'POST',
           header: WxApi.header,
+          timeout: 5000,
           data: {
             goodsId,
             goodsNum,
@@ -47,6 +49,7 @@ export const getCart = (goodsId, goodsNum, goodsSkuId) => {
           url:WxApi.baseUrl + '/cart/add',
           method: 'POST',
           header: WxApi.header,
+          timeout: 5000,
           data: {
             goodsId,
             goodsNum,
@@ -69,6 +72,7 @@ export const deletCart = (cartIds) => {
           url:WxApi.baseUrl + '/cart/clear',
           method: 'POST',
           header: WxApi.header,
+          timeout: 5000,
           data: {
             cartIds
           },

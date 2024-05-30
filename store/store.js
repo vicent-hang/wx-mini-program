@@ -2,7 +2,7 @@
  * 全局状态管理
  */
 import { observable, action } from 'mobx-miniprogram';
-import { getCartList, getUpdadeCart } from '../api/cart/cart';
+import { deletCart, getCartList, getUpdadeCart } from '../api/cart/cart';
 
 export const cartSore = observable({
   // 数据字段
@@ -32,8 +32,11 @@ export const cartSore = observable({
     //重写拉取列表
     cartSore.getCartListAction()
   }),
-  deleteCartAction: action(() => {
+  deleteCartAction: action(async (cartIds) => {
+    await deletCart(cartIds)
 
+    //重写拉取列表
+    cartSore.getCartListAction()
   })
 });
 

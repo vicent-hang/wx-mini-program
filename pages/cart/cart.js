@@ -1,6 +1,7 @@
 import { cartSore } from '../../store/store'
 import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
+import Dialog from '../../miniprogram_npm/vant-weapp/dialog/dialog'
 
 // pages/cart/cart.js
 Page({
@@ -9,7 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isEdit: false
+    isEdit: false,
+    isAll: true, //全选
+    isCheckedArray: []
   },
 
   /**
@@ -35,11 +38,45 @@ Page({
     });
   },
 
+  //删除
+  // 复选框状态
+  onChange(event) {
+    console.log(event.detail);
+    this.setData({
+      isCheckedArray: event.detail,
+    });
+  },
+  selectAll() {
+    this.setData({
+      isAll: !this.data.isAll
+    })
+  },
   delete() {
     this.setData({
       isEdit: !this.data.isEdit
     })
   },
+  deleteCart() {
+    const deleteArray = this.data.isCheckedArray.map(e => {
+      return parseInt(e)
+    })
+
+    Dialog.confirm({
+      title: '标题',
+      message: '弹窗内容',
+      duration: 1000
+    })
+      .then(() => {
+        Toast.loading({
+          forbidClick: true,
+        });
+        this.deleteCartAction(deleteArray)
+    })
+      .catch(() => {
+        // on cancel
+    });
+  },
+
 
 
   /**
@@ -54,6 +91,7 @@ Page({
       actions: ['getCartListAction','upadateCartAction','deleteCartAction']
     })
     this.getCartListAction()
+    
   },
 
   /**
@@ -67,7 +105,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    this.getCartListAction()
   },
 
   /**

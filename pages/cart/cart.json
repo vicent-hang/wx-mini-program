@@ -2,6 +2,8 @@
   "usingComponents": {
     "navigation-bar": "/components/navigation-bar/navigation-bar",
     "van-card": "../../miniprogram_npm/vant-weapp/card",
-    "van-checkbox": "../../miniprogram_npm/vant-weapp/checkbox"
+    "van-checkbox": "../../miniprogram_npm/vant-weapp/checkbox",
+    "van-checkbox-group": "../../miniprogram_npm/vant-weapp/checkbox-group",
+    "van-dialog": "../../miniprogram_npm/vant-weapp/dialog"
   }
 }
