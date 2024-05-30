@@ -1,6 +1,7 @@
 <!--pages/goodsInfo/goodsInfo.wxml-->
 <navigation-bar title="商品详情" back="{{true}}" color="white" background="#c21401"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
+    <!-- 轮播图 -->
     <view class="container">
         <swiper 
         indicator-dots="true" 
@@ -14,6 +15,7 @@
                 <image class="swiper-card-img" src="{{ item.external_url}}"></image>
             </swiper-item>
         </swiper>
+        <!-- 标题 -->
         <view class="goodsinfo-title">
             <view class="goodsinfo-title-price">
                 <text style="font-size: larger;color: red;">{{ goodsInfoList[0].goods_price_max }} ￥</text>
@@ -31,14 +33,15 @@
                 <text style="font-size: smaller;">包邮</text>
             </view>
         </view>
+        <!-- 详情图 -->
         <view class="goodsinfo-dsc">
             <text style="font-size: large;padding: 40rpx 20rpx;display: block;">详情</text>
             <image wx:for="{{ goodsInfoList[0].goods_images }}" wx:key="index" src="{{ item.external_url }}"></image>
         </view>
     </view>
     <!-- 底部标签栏 -->
-    <van-tabbar active="{{ active }}" bind:change="onChange">
-        <van-tabbar-item>
+    <van-tabbar active="{{ active }}">
+        <van-tabbar-item bindtap="goIndex">
             <image
             slot="icon"
             src="/assets/icon/home.png"
@@ -46,7 +49,7 @@
             style="width: 50rpx;height: 50rpx;"
             />
         </van-tabbar-item>
-        <van-tabbar-item info="3">
+        <van-tabbar-item info="3" bindtap="goCart">
             <image
             slot="icon"
             src="/assets/icon/shopping.png"
@@ -69,18 +72,18 @@
     <view class="goods-item">
         <image src="{{ goodsInfoList[0].goods_image }}" mode="aspectFit" style="width: 300rpx;height: 300rpx;"></image>
         <view style="margin: 0 40rpx;">
-            <text style="display: block;color: red;">0.01 ￥</text>
-            <text style="display: block;">mingzi</text>
+            <text style="display: block;color: red;">{{ goodsInfoList[0].goods_price_max }} ￥</text>
+            <text style="display: block;">库存：{{ goodsInfoList[0].stock_total }}</text>
         </view>
     </view>
     <view class="goods-count">
         <text>数量</text>
         <view style="display: flex; align-items: center;width: 30%;">
-            <button size="mini" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx;">-</button>
-            <text style="padding: 0 10rpx;">1</text>
-            <button size="mini" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx">+</button>
+            <button size="mini" bindtap="sub" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding:0 10rpx;">-</button>
+            <text style="padding: 15rpx 20rpx;background-color: rgb(235, 235, 235);">{{ count }}</text>
+            <button size="mini" bindtap="add" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx">+</button>
         </view>
     </view>
-    <button class="btn" style="width: 70%;">加入购物车</button>
+    <button class="btn" bindtap="addCart" style="width: 70%;">加入购物车</button>
 </van-popup>
 <van-loading class="loading" color="#c21401" wx:if="{{ goodsInfoList.length === 0 }}" />

@@ -1,8 +1,9 @@
 <!--pages/user/user.wxml-->
 <!-- 顶部导航栏 -->
-<navigation-bar title="个人中心" back="{{true}}" color="white" background="#c21401"></navigation-bar>
+<navigation-bar title="个人中心" back="{{false}}" color="white" background="#c21401"></navigation-bar>
 <scroll-view class="scrollarea" scroll-y type="list">
     <view class="container">
+    <!-- 个人中心页头 -->
         <view class="uesr-title">
             <image src="/assets/img/头像9.png" style="width: 150rpx;height: 150rpx;"></image>
             <view  style="margin: 0 20rpx;">
@@ -11,6 +12,7 @@
             </view>
             <button bindtap="loginOut" type="warn" size="mini"><text class="uesr-title-btn">退出登录</text></button>
         </view>
+        <!-- 账户信息 -->
         <view class="user-account">
             <view class="user-account-item">
                 <text style="display: block;font-size: larger;margin: 10rpx;color: red;">6666￥</text>
@@ -25,6 +27,7 @@
                 <text style="display: block;font-size:30rpx;margin: 10rpx;color: gray;">优惠券</text>
             </view>
         </view>
+        <!-- 订单信息 -->
         <view class="user-order">
             <view class="user-account-item">
                 <van-icon name="coupon-o" size="55rpx" />
@@ -39,6 +42,7 @@
                 <text style="display: block;font-size:30rpx;color: #353535;">退换/售后</text>
             </view>
         </view>
+        <!-- 服务选项 -->
         <view class="user-server">
             <text class="user-server-title">我的服务</text>
             <view class="user-server-content">

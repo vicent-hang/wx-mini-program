@@ -1,6 +1,7 @@
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
 import { WxApi } from '../../utils/http.config'
 
+// 登录
 export const login = (phoneNumber, password) => {
     return new Promise((resolve , reject) => {
         wx.request({

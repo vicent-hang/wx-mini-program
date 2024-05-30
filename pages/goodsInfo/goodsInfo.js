@@ -1,3 +1,4 @@
+import { getCart } from "../../api/cart/cart"
 import { getGoodsInfo } from "../../api/goods/goods"
 
 // pages/goodsInfo/goodsInfo.js
@@ -8,7 +9,8 @@ Page({
    */
   data: {
     goodsInfoList: [],
-    show: false
+    show: false,
+    count: 1,
   },
 
   /**
@@ -32,6 +34,47 @@ Page({
 
    onClose() {
     this.setData({ show: false });
+  },
+
+  //数量加减
+  sub() {
+    
+    this.setData({
+      count: (this.data.count - 1) < 0? 0 : (this.data.count - 1)
+    })
+  },
+  add() {
+    this.setData({
+      count: this.data.count + 1
+    })
+  },
+
+
+  //加入购物车
+  async addCart() {
+    if(this.data.goodsInfoList.length == 0){
+      return
+    }
+    const goodsId = this.data.goodsInfoList[0].goods_id
+    const goodsNum = this.data.count
+    const goodsSkuId = this.data.goodsInfoList[0].skuList[0].goods_sku_id
+    const res = getCart(goodsId, goodsNum, goodsSkuId)
+    console.log(res);
+    // wx.switchTab({
+    //   url: '/pages/cart/cart',
+    // })
+  },
+
+  goIndex() {
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
+  },
+
+  goCart() {
+    wx.switchTab({
+      url: '/pages/cart/cart',
+    })
   },
 
   /**

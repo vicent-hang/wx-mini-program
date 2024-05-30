@@ -4,6 +4,7 @@
 <!-- 主体 -->
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
+  <!-- 首页头 -->
     <view class="search">
       <van-search
         background="#eee"
@@ -26,6 +27,7 @@
       </swiper-item>
     </swiper>
   </view>
+  <!-- 商品列表 -->
   <view class="goods-list">
     <view wx:for="{{ goodsList }}" wx:key="index">
       <view class="goods-item" bindtap="goGoodsInfoPage" data-goods-id="{{ item.goods_id }}">

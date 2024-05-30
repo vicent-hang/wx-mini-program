@@ -1,4 +1,33 @@
 <!--pages/cart/cart.wxml-->
 <!-- 顶部导航栏 -->
-<navigation-bar title="购物车" back="{{true}}" color="white" background="#c21401"></navigation-bar>
+<navigation-bar title="购物车" back="{{false}}" color="white" background="#c21401"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <!-- 购物车头 -->
+  <view class="container">
+    <view style="display: flex;flex-direction: row;justify-content: space-between;padding: 20rpx;width: 90%;">
+      <view><text>共</text><text style="color: red;margin: 0 10rpx;">6</text><text>件商品</text></view>
+      <view>
+        <van-icon name="edit"></van-icon>
+        <text>编辑</text>
+      </view>
+    </view>
 
+    <!-- 购物车列表 -->
+    <van-card
+      wx:for="{{ cartList }}"
+      num="{{ item.goods_num }}"
+      price="10.00"
+      desc="描述信息"
+      title="商品标题"
+      thumb="{{ item.goods.goods_image }}"
+      style="width: 95%;margin-bottom: 20rpx;border-radius: 20rpx;"
+    >
+      <view slot="footer" >
+        <!-- <van-button size="mini" round >+</van-button>
+        <van-button size="mini" round style="width: 30%;">-</van-button> -->
+            <button size="mini" bindtap="sub" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding:0 10rpx;margin: 0 10rpx;border-radius: 50%;">-</button>
+            <button size="mini" bindtap="add" style="width: 60rpx; height: 60rpx;background-color: rgb(235, 235, 235);padding: 0 10rpx;margin: 0 10rpx;border-radius: 50%;">+</button>
+      </view>
+    </van-card>
+</view>
+</scroll-view>

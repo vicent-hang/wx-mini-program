@@ -1,5 +1,5 @@
 {
-  "entryPagePath": "pages/index/index",
+  "entryPagePath": "pages/cart/cart",
   "pages": [
     "pages/index/index",
     "pages/login/login",
@@ -17,7 +17,8 @@
     "navigation-bar": "./components/navigation-bar/navigation-bar",
     "van-loading": "./miniprogram_npm/vant-weapp/loading",
     "van-toast": "./miniprogram_npm/vant-weapp/toast",
-    "van-icon": "./miniprogram_npm/vant-weapp/icon"
+    "van-icon": "./miniprogram_npm/vant-weapp/icon",
+    "van-button": "./miniprogram_npm/vant-weapp/button"
   },
   "tabBar": {
     "list": [

@@ -1,1 +1,6 @@
 /* pages/cart/cart.wxss */
+.scrollarea {
+    flex: 1;
+    overflow: scroll;
+    max-height: 90vh;
+  }
