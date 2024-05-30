@@ -16,7 +16,7 @@ Page({
   onSearch(event) {
     //  console.log(event.detail);
     const query = event.detail.trim()
-    console.log(query.length);
+    // console.log(query.length);
     if(query === ''){
       return
     }

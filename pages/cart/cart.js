@@ -41,10 +41,11 @@ Page({
   //删除
   // 复选框状态
   onChange(event) {
-    console.log(event.detail);
+    // console.log(event.detail);
     this.setData({
       isCheckedArray: event.detail,
     });
+    this.getIsChecked(this.data.isCheckedArray)
   },
   selectAll() {
     this.setData({
@@ -62,19 +63,24 @@ Page({
     })
 
     Dialog.confirm({
-      title: '标题',
-      message: '弹窗内容',
-      duration: 1000
+      title: '确定删除？',
     })
       .then(() => {
         Toast.loading({
           forbidClick: true,
+          duration: 1000
         });
         this.deleteCartAction(deleteArray)
     })
       .catch(() => {
         // on cancel
     });
+  },
+
+  goIndex() {
+    wx.switchTab({
+      url: '/pages/index/index',
+    })
   },
 
 
@@ -88,7 +94,7 @@ Page({
     this.storeBindings = createStoreBindings(this, {
       store: cartSore,
       fields: ['cartList','totalCount','totalPrice'],
-      actions: ['getCartListAction','upadateCartAction','deleteCartAction']
+      actions: ['getCartListAction','upadateCartAction','deleteCartAction','getIsChecked']
     })
     this.getCartListAction()
     
@@ -106,6 +112,7 @@ Page({
    */
   onShow() {
     this.getCartListAction()
+
   },
 
   /**

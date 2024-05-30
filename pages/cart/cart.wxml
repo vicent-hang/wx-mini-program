@@ -6,9 +6,12 @@
   <view wx:if="{{ cartList.length > 0 }}" class="container">
     <view style="display: flex;flex-direction: row;justify-content: space-between;padding: 20rpx;width: 90%;">
       <view><text>共</text><text style="color: red;margin: 0 10rpx;">{{ totalCount }}</text><text>件商品</text></view>
-      <view>
+      <view wx:if="{{ !isEdit }}">
         <van-icon name="edit"></van-icon>
         <text bindtap="delete">编辑</text>
+      </view>
+      <view wx:else>
+        <text style="color: red;" bindtap="delete">完成</text>
       </view>
     </view>
     <!-- 购物车列表 -->
@@ -38,9 +41,10 @@
   <view wx:else class="searchlist-content">
       <view class="searchlist-notFound">
         <image src="/assets/img/not-found.png" style="width: 500rpx;height: 300rpx;"></image>
-        <text>购物车为空</text>
+        <button style="border-radius: 50rpx;background-color: #fc4128;color: white;" bindtap="goIndex">去逛逛</button>
       </view>
-    </view>
+  </view>
+    <!-- 底栏-结算 -->
   <view class="tabbar-bill">   
     <van-checkbox value="{{ isAll }}" bind:change="selectAll">复选框</van-checkbox>
     <view wx:if="{{ !isEdit }}" class="card-row" style="width: 70%;">
