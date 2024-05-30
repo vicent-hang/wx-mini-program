@@ -10,12 +10,13 @@ export const cartSore = observable({
 
   // 计算属性
   get totalCount() {
-    // 返回一些计算值，假设有需要计算的属性
-    return 0; // 示例值，根据需要修改
+    const length = cartSore.cartList.reduce((sum, item) => sum + item.goods_num, 0)
+    return length; 
   },
   get totalPrice() {
-    // 返回一些计算值，假设有需要计算的属性
-    return 0; // 示例值，根据需要修改
+    // 返回计算值
+    const totalPrice = cartSore.cartList.reduce((sum, item) => sum + item.goods_num * item.goods.goods_price_max, 0)
+    return totalPrice.toFixed(0);
   },
 
   // actions

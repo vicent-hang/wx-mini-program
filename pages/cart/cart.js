@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    isEdit: false
   },
 
   /**
@@ -35,6 +35,12 @@ Page({
     });
   },
 
+  delete() {
+    this.setData({
+      isEdit: !this.data.isEdit
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -44,7 +50,7 @@ Page({
     // 获取仓库数据
     this.storeBindings = createStoreBindings(this, {
       store: cartSore,
-      fields: ['cartList'],
+      fields: ['cartList','totalCount','totalPrice'],
       actions: ['getCartListAction','upadateCartAction','deleteCartAction']
     })
     this.getCartListAction()

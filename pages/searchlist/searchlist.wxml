@@ -20,7 +20,7 @@
     </view>
     <!-- 商品列表 -->
     <view wx:if="{{ searchList.length > 0 }}" class="searchlist-content">
-      <view class="searchlist-item" wx:for="{{ searchList }}" wx:key="index">
+      <view bindtap="goInfoPage" data-goods-id="{{ item.goods_id }}" class="searchlist-item" wx:for="{{ searchList }}" wx:key="index">
         <image style="width: 300rpx;height: 200rpx;" src="{{ item.goods_image }}"></image>
         <view style="padding: 0 20rpx;margin-left: 20rpx;">
           <text style="display: block">{{ item.goods_name }}</text>

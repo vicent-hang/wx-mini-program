@@ -60,6 +60,14 @@ Page({
   })
 },
 
+// 跳转详情页
+goInfoPage(event) {
+  const goodsId = event.currentTarget.dataset.goodsId
+  wx.navigateTo({
+    url: `/pages/goodsInfo/goodsInfo?goodsId=${goodsId}`,
+  })
+},
+
   // 标签功能
   // 综合
   handleTextClick01(event) {

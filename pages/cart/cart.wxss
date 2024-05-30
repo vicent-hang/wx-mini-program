@@ -2,7 +2,7 @@
 .scrollarea {
     flex: 1;
     overflow: scroll;
-    max-height: 90vh;
+    max-height: 80vh;
   }
 
   .cartlist{
