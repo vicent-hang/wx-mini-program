@@ -35,7 +35,11 @@ export const cartSore = observable({
   getCartListAction: action(async () => {
     try {
       const { data } = await getCartList()
-      console.log(data);
+      // console.log(data);
+      if(data.length === 0) {
+        cartSore.cartList = []
+        return
+      }
       // 给每个item 加上isChecked标识，用于计算属性
       data.list.forEach(item => item.isChecked = false)
       cartSore.cartList = data.list
