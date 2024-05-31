@@ -46,7 +46,7 @@
   </view>
     <!-- 底栏-结算 -->
   <view class="tabbar-bill">   
-    <van-checkbox value="{{ isAll }}" bind:change="selectAll">复选框</van-checkbox>
+    <van-checkbox value="{{ selectAllCart }}" bind:change="selectAll">全选</van-checkbox>
     <view wx:if="{{ !isEdit }}" class="card-row" style="width: 70%;">
       <text>合计：</text><text style="color: red;">{{ totalPrice }}</text><text>￥</text>
       <button style="background-color: #fc4128;color: white;width: 200rpx;border-radius: 50rpx;" bindtap="">结算</button>

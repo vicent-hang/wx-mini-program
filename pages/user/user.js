@@ -22,29 +22,27 @@ Page({
       Toast.success('退出成功!')
 
       setTimeout(() => {
-        wx.redirectTo({
+        wx.navigateTo({
           url: '/pages/login/login'
         })
       },1000)
-    }).catch(() => {
-      // on cancel
-    });
-    
+      }).catch(() => {
+        // on cancel
+      });
 
-    
-  },
+    },
+
+    lgoin() {
+      wx.navigateTo({
+        url: '/pages/login/login'
+      })
+    },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const newUserInfo = JSON.parse(wx.getStorageSync('user_info'))? JSON.parse(wx.getStorageSync('user_info')) : {}
-    if(newUserInfo.phoneNumber) {
-      newUserInfo.phoneNumber = newUserInfo.phoneNumber.slice(0,3)+'******'+newUserInfo.phoneNumber.slice(8,11)
-    }
-    this.setData({
-      userInfo: newUserInfo
-    })
+    
   },
 
   /**
@@ -58,7 +56,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    let newUserInfo = {}
+    if(wx.getStorageSync('user_info')) {
+      newUserInfo = JSON.parse(wx.getStorageSync('user_info'))? JSON.parse(wx.getStorageSync('user_info')) : {}
+      newUserInfo.phoneNumber = newUserInfo.phoneNumber.slice(0,3)+'******'+newUserInfo.phoneNumber.slice(8,11)
+    }
+    this.setData({
+      userInfo: newUserInfo
+    })
   },
 
   /**

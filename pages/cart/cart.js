@@ -48,9 +48,23 @@ Page({
     this.getIsChecked(this.data.isCheckedArray)
   },
   selectAll() {
+    this.toggleAllCheck(!this.data.isAll)
     this.setData({
       isAll: !this.data.isAll
     })
+
+    const newArray = []
+    if(this.data.isAll) {
+      cartSore.cartList.forEach(item => {
+        newArray.push(item.id+"")
+      })
+    }
+    this.setData({
+      isCheckedArray: newArray
+    })
+    
+
+    
   },
   delete() {
     this.setData({
@@ -77,11 +91,15 @@ Page({
     });
   },
 
+
+
   goIndex() {
     wx.switchTab({
       url: '/pages/index/index',
     })
   },
+
+
 
 
 
@@ -93,8 +111,8 @@ Page({
     // 获取仓库数据
     this.storeBindings = createStoreBindings(this, {
       store: cartSore,
-      fields: ['cartList','totalCount','totalPrice'],
-      actions: ['getCartListAction','upadateCartAction','deleteCartAction','getIsChecked']
+      fields: ['cartList','totalCount','totalPrice','selectAllCart'],
+      actions: ['getCartListAction','upadateCartAction','deleteCartAction','getIsChecked','toggleAllCheck']
     })
     this.getCartListAction()
     

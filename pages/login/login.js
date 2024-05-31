@@ -1,5 +1,6 @@
 import { login } from "../../api/user/login"
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
+import { WxApi } from "../../utils/http.config";
 
 // pages/login/login.js
 Page({
@@ -22,6 +23,8 @@ Page({
       const res = await login(this.data.phoneNumber, this.data.passwrod);
       // console.log(res);
       if (res.status >= 200 && res.status < 300) {
+        WxApi.header.token = res.data.token
+        console.log(WxApi.header.token);
         wx.setStorageSync('token', res.data.token);
         wx.setStorageSync('user_info', JSON.stringify({userName: 'ikun',phoneNumber: this.data.phoneNumber}));
         Toast.success('登录成功!');

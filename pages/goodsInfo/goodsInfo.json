@@ -6,6 +6,7 @@
     "van-tabbar": "../../miniprogram_npm/vant-weapp/tabbar",
     "van-tabbar-item": "../../miniprogram_npm/vant-weapp/tabbar-item",
     "van-popup": "../../miniprogram_npm/vant-weapp/popup",
-    "van-card": "../../miniprogram_npm/vant-weapp/card"
+    "van-card": "../../miniprogram_npm/vant-weapp/card",
+    "van-dialog": "../../miniprogram_npm/vant-weapp/dialog"
   }
 }

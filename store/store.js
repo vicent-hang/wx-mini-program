@@ -22,35 +22,64 @@ export const cartSore = observable({
   get selCheckedItem () {
     return cartSore.cartList.filter(item => item.isChecked === true)
   },
+  //全选
+  get selectAllCart() {
+    return cartSore.cartList.every(item => item.isChecked)
+  },
 
 
   // actions
+  //获取购物车列表
   getCartListAction: action(async () => {
-    const { data } = await getCartList()
-
-    // 给每个item 加上isChecked标识，用于计算属性
-    data.list.forEach(item => item.isChecked = false)
-    cartSore.cartList = data.list
-  }),
-  upadateCartAction: action(async (goodsId,goodsNum,goodsSkuId) => {
-    await getUpdadeCart(goodsId,goodsNum,goodsSkuId)
-    // console.log(res);
-
-    //重写拉取列表
-    cartSore.getCartListAction()
-  }),
-  deleteCartAction: action(async (cartIds) => {
-    await deletCart(cartIds)
-
-    //重写拉取列表
-    cartSore.getCartListAction()
-  }),
-  getIsChecked: action((array) => {
-    for(let i = 0; i<array.length; i++) {
-      if(cartSore.cartList[i].id === parseInt(array[i]))
-      cartSore.cartList[i].isChecked = !cartSore.cartList[i].isChecked
+    try {
+      const { data } = await getCartList()
+  
+      // 给每个item 加上isChecked标识，用于计算属性
+      data.list.forEach(item => item.isChecked = false)
+      cartSore.cartList = data.list
+    } catch (error) {
+      console.log(error);
     }
+  }),
+  //更新购物车
+  upadateCartAction: action(async (goodsId,goodsNum,goodsSkuId) => {
+    try {
+      await getUpdadeCart(goodsId,goodsNum,goodsSkuId)
+      // console.log(res);
+  
+      //重写拉取列表
+      cartSore.getCartListAction()
+    } catch (error) {
+      console.log(error);
+    }
+  }),
+  //删除购物车item
+  deleteCartAction: action(async (cartIds) => {
+    try {
+      await deletCart(cartIds)
+  
+      //重写拉取列表
+      cartSore.getCartListAction()
+    } catch (error) {
+      console.log(error);
+    }
+  }),
+  //获取选中的item
+  getIsChecked: action((array) => {
+    // 数组中有的id，isChecked为true, 没有的为false
+    const idsSet = new Set(array.map(id => parseInt(id)));
+    cartSore.cartList = cartSore.cartList.map(item => ({
+      ...item,
+      isChecked: idsSet.has(item.id)
+    }));
+    // console.log(cartSore.cartList);
+  }),
+  //切换全选状态
+  toggleAllCheck: action((flag) => {
+    cartSore.cartList.forEach(item => item.isChecked = flag)
   })
+
+ 
   
 });
 

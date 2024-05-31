@@ -10,7 +10,8 @@
                 <text style="display: block;">{{ userInfo.userName }}</text>
                 <text style="display: block;font-size: small;">{{ userInfo.phoneNumber }}</text>
             </view>
-            <button bindtap="loginOut" type="warn" size="mini"><text class="uesr-title-btn">退出登录</text></button>
+            <button wx:if="{{ userInfo.phoneNumber }}" bindtap="loginOut" type="warn" size="mini"><text class="uesr-title-btn">退出登录</text></button>
+            <button wx:else bindtap="loginOut" type="warn" size="mini"><text class="uesr-title-btn" catchtap="lgoin">立即登录</text></button>
         </view>
         <!-- 账户信息 -->
         <view class="user-account">

@@ -1,9 +1,7 @@
 // pages/index/index.js
-
-import { createStoreBindings } from "mobx-miniprogram-bindings";
+import { cartSore } from '../../store/store'
+import { createStoreBindings } from 'mobx-miniprogram-bindings'
 import { getIndexList }  from "../../api/home/index"
-import { userStore } from '../../store/store'
-import { WxApi } from "../../utils/http.config";
 
 
 Page({
@@ -60,12 +58,14 @@ Page({
    */
   onLoad(options) {
     this.getHomeDataList()
-    // this.storeBindings = createStoreBindings(this, {
-    //   store: userStore,
-    //   fields: ['userInfo'],
-    //   actions: ['setUserInfo']
-    // })
-    // this.setUserInfo()
+
+
+    // 获取仓库数据
+    this.storeBindings = createStoreBindings(this, {
+      store: cartSore,
+      fields: ['cartList','totalCount','totalPrice','selectAllCart'],
+      actions: ['getCartListAction','upadateCartAction','deleteCartAction','getIsChecked','toggleAllCheck']
+    })
     
   },
 

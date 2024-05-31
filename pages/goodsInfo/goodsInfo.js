@@ -1,5 +1,6 @@
 import { getCart } from "../../api/cart/cart"
 import { getGoodsInfo } from "../../api/goods/goods"
+import Dialog from "../../miniprogram_npm/vant-weapp/dialog/dialog"
 import Toast from "../../miniprogram_npm/vant-weapp/toast/toast"
 
 // pages/goodsInfo/goodsInfo.js
@@ -53,7 +54,23 @@ Page({
 
   //加入购物车
   async addCart() {
-    if(this.data.goodsInfoList.length == 0){
+    // 验证是否已经登录
+    const token = wx.getStorageSync('token')
+    if(!token) {
+      Dialog.confirm({
+        title: '您还没有登录哦!',
+      })
+        .then(() => {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
+        })
+        .catch(() => {
+          // on cancel
+        });
+    }
+
+    if(this.data.goodsInfoList.length === 0){
       return
     }
     const goodsId = this.data.goodsInfoList[0].goods_id
@@ -66,10 +83,6 @@ Page({
         show: false
       })
     }
-    // console.log(res);
-    // wx.switchTab({
-    //   url: '/pages/cart/cart',
-    // })
   },
 
   goIndex() {
