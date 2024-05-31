@@ -8,8 +8,8 @@ export const getCartList = () => {
           url:WxApi.baseUrl + '/cart/list',
           method: 'GET',
           header: {
-            
-            'token': userStore.token
+            ...WxApi.header,
+            'Access-Token': userStore.token
           },
           timeout: 5000,
           success: res => {
@@ -29,7 +29,10 @@ export const getUpdadeCart = (goodsId, goodsNum, goodsSkuId) => {
         wx.request({
           url:WxApi.baseUrl + '/cart/update',
           method: 'POST',
-          header: WxApi.header,
+          header: {
+            ...WxApi.header,
+            'Access-Token': userStore.token
+          },
           timeout: 5000,
           data: {
             goodsId,
@@ -52,7 +55,10 @@ export const getCart = (goodsId, goodsNum, goodsSkuId) => {
         wx.request({
           url:WxApi.baseUrl + '/cart/add',
           method: 'POST',
-          header: WxApi.header,
+          header: {
+            ...WxApi.header,
+            'Access-Token': userStore.token
+          },
           timeout: 5000,
           data: {
             goodsId,
@@ -75,7 +81,10 @@ export const deletCart = (cartIds) => {
         wx.request({
           url:WxApi.baseUrl + '/cart/clear',
           method: 'POST',
-          header: WxApi.header,
+          header: {
+            ...WxApi.header,
+            'Access-Token': userStore.token
+          },
           timeout: 5000,
           data: {
             cartIds

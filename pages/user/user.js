@@ -1,5 +1,7 @@
 import Toast from "../../miniprogram_npm/vant-weapp/toast/toast"
 import Dialog from "../../miniprogram_npm/vant-weapp/dialog/dialog"
+import { userStore } from '../../store/store'
+import { createStoreBindings } from 'mobx-miniprogram-bindings'
 
 // pages/user/user.js
 Page({
@@ -19,6 +21,7 @@ Page({
       title: '确定退出？',
     }).then(() => {
       wx.clearStorageSync()
+      this.clearInfo()
       Toast.success('退出成功!')
 
       setTimeout(() => {
@@ -43,6 +46,12 @@ Page({
    */
   onLoad(options) {
     
+    // 获取仓库数据
+    this.storeBindings = createStoreBindings(this, {
+      store: userStore,
+      fields: ['userInfo'],
+      actions: ['setUserInfoAction', 'clearInfo']
+    })
   },
 
   /**
@@ -77,7 +86,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    this.storeBindings.destroyStoreBindings()
   },
 
   /**

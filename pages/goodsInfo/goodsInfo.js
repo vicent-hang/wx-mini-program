@@ -2,6 +2,7 @@ import { getCart } from "../../api/cart/cart"
 import { getGoodsInfo } from "../../api/goods/goods"
 import Dialog from "../../miniprogram_npm/vant-weapp/dialog/dialog"
 import Toast from "../../miniprogram_npm/vant-weapp/toast/toast"
+import { getInfo } from "../../utils/srorage"
 
 // pages/goodsInfo/goodsInfo.js
 Page({
@@ -55,7 +56,8 @@ Page({
   //加入购物车
   async addCart() {
     // 验证是否已经登录
-    const token = wx.getStorageSync('token')
+    const { token } = getInfo()
+    // console.log(token);
     if(!token) {
       Dialog.confirm({
         title: '您还没有登录哦!',
