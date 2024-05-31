@@ -1,4 +1,5 @@
 import { WxApi } from '../../utils/http.config'
+import { userStore } from '../../store/store';
 
 //获取购物车列表
 export const getCartList = () => {
@@ -6,7 +7,10 @@ export const getCartList = () => {
         wx.request({
           url:WxApi.baseUrl + '/cart/list',
           method: 'GET',
-          header: WxApi.header,
+          header: {
+            
+            'token': userStore.token
+          },
           timeout: 5000,
           success: res => {
             resolve(res.data)

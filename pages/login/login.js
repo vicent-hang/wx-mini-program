@@ -1,6 +1,8 @@
 import { login } from "../../api/user/login"
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast'
+import { userStore } from "../../store/store";
 import { WxApi } from "../../utils/http.config";
+import { createStoreBindings } from 'mobx-miniprogram-bindings'
 
 // pages/login/login.js
 Page({
@@ -21,12 +23,10 @@ Page({
   async onLogin() {
     try {
       const res = await login(this.data.phoneNumber, this.data.passwrod);
-      // console.log(res);
+      console.log(res);
       if (res.status >= 200 && res.status < 300) {
-        WxApi.header.token = res.data.token
-        console.log(WxApi.header.token);
-        wx.setStorageSync('token', res.data.token);
-        wx.setStorageSync('user_info', JSON.stringify({userName: 'ikun',phoneNumber: this.data.phoneNumber}));
+        const obj = {userName: 'ikun', phoneNumber: this.data.phoneNumber, token: res.data.token}
+        this.setUserInfoAction(obj)
         Toast.success('登录成功!');
         // 跳转
         // 获取页面栈
@@ -92,6 +92,11 @@ Page({
    */
   onLoad(options) {
 
+    // 获取仓库数据
+    this.storeBindings = createStoreBindings(this, {
+      store: userStore,
+      actions: ['setUserInfoAction']
+    })
   },
 
   /**
@@ -119,7 +124,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+    this.storeBindings.destroyStoreBindings()
   },
 
   /**

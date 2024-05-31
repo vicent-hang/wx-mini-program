@@ -3,6 +3,8 @@
  */
 import { observable, action } from 'mobx-miniprogram';
 import { deletCart, getCartList, getUpdadeCart } from '../api/cart/cart';
+import { login } from '../api/user/login';
+import { getInfo, setInfo } from '../utils/srorage';
 
 export const cartSore = observable({
   // 数据字段
@@ -82,6 +84,21 @@ export const cartSore = observable({
  
   
 });
+
+export const userStore = observable({
+  userInfo: getInfo(),
+
+  // 计算属性
+  get token() {
+    return userStore.userInfo.token
+  },
+
+  // actions
+  setUserInfoAction: action((obj) =>{
+    userStore.userInfo = obj
+    setInfo(obj)
+  } ),
+})
 
 
 

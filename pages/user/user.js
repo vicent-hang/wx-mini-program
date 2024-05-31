@@ -57,8 +57,8 @@ Page({
    */
   onShow() {
     let newUserInfo = {}
-    if(wx.getStorageSync('user_info')) {
-      newUserInfo = JSON.parse(wx.getStorageSync('user_info'))? JSON.parse(wx.getStorageSync('user_info')) : {}
+    if(wx.getStorageSync('USER_INFO')) {
+      newUserInfo = JSON.parse(wx.getStorageSync('USER_INFO'))? JSON.parse(wx.getStorageSync('USER_INFO')) : {}
       newUserInfo.phoneNumber = newUserInfo.phoneNumber.slice(0,3)+'******'+newUserInfo.phoneNumber.slice(8,11)
     }
     this.setData({
